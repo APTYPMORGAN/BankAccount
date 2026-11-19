@@ -1,33 +1,31 @@
-﻿Console.WriteLine("=== ПРОВЕРКА БАНКОВСКИХ СЧЕТОВ ===\n");
+﻿BankAccount YuriiAccount = new BankAccount("  Васильев Юрий  ", 5000);
+BankAccount AptypAccount = new BankAccount("Куриев Артур", 15000, "USD");
 
-BankAccount ivanAccount = new BankAccount("  Иван Петров  ", 5000);
-BankAccount annaAccount = new BankAccount("Анна Смирнова", 15000, "USD");
-
-Console.WriteLine(ivanAccount.GetInfo());
+Console.WriteLine(YuriiAccount.GetInfo());
 Console.WriteLine();
-Console.WriteLine(annaAccount.GetInfo());
+Console.WriteLine(AptypAccount.GetInfo());
 Console.WriteLine();
 
-Console.WriteLine("--- Операции со счётом Ивана ---");
-ivanAccount.Deposit(2500);
-Console.WriteLine($"После пополнения (+2500): {ivanAccount.Balance} {ivanAccount.Currency}");
+Console.WriteLine("--- Операции со счётом Юрия ---");
+YuriiAccount.Deposit(2500);
+Console.WriteLine($"После пополнения (+2500): {YuriiAccount.Balance} {YuriiAccount.Currency}");
 
-ivanAccount.Withdraw(4000);
-Console.WriteLine($"После снятия (-4000): {ivanAccount.Balance} {ivanAccount.Currency}");
+YuriiAccount.Withdraw(4000);
+Console.WriteLine($"После снятия (-4000): {YuriiAccount.Balance} {YuriiAccount.Currency}");
 
-ivanAccount.Deposit(-1000);
-Console.WriteLine($"После попытки пополнить на -1000 (не изменился): {ivanAccount.Balance}");
+YuriiAccount.Deposit(-1000);
+Console.WriteLine($"После попытки пополнить на -1000: {YuriiAccount.Balance}");
 
-ivanAccount.Withdraw(-500);
-Console.WriteLine($"После попытки снять -500 (не изменился): {ivanAccount.Balance}");
+YuriiAccount.Withdraw(-500);
+Console.WriteLine($"После попытки снять -500: {YuriiAccount.Balance}");
 
-ivanAccount.Withdraw(50000);
-Console.WriteLine($"После попытки снять больше остатка (не изменился): {ivanAccount.Balance}");
+YuriiAccount.Withdraw(50000);
+Console.WriteLine($"После попытки снять больше остатка: {YuriiAccount.Balance}");
 
-ivanAccount.Deposit(2000000);
-Console.WriteLine($"После пополнения выше максимума (ограничен 1000000): {ivanAccount.Balance}");
+YuriiAccount.Deposit(2000000);
+Console.WriteLine($"После пополнения выше максимума: {YuriiAccount.Balance}");
 Console.WriteLine();
 
-Console.WriteLine("--- Проверка некорректного создания счёта ---");
-BankAccount brokenAccount = new BankAccount("   ", -500, "");
-Console.WriteLine(brokenAccount.GetInfo());
+Console.WriteLine("--- Проверка неправильного создания счёта ---");
+BankAccount brokeAccount = new BankAccount("   ", -500, "");
+Console.WriteLine(brokeAccount.GetInfo());
